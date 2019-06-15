@@ -1,0 +1,30 @@
+//Created by Adrian
+PImage img;
+
+void setup(){
+ size(320,240);
+img=loadImage("gbr.JPG"); 
+}
+
+void draw(){
+  background(255);
+ image(img, 0,0); 
+ 
+ loadPixels();
+  // Begin our loop for every pixel in the smaller image
+   for (int x = 0; x < img.width; x++) {
+   for (int y = 0; y < img.height; y++ ) {
+      //color c = convolution(x, y, matrix, matrixsize, img);
+      int loc = x + y*img.width;
+      //print(pixels[loc]);
+      float r = red(img.pixels[loc]);
+      float g = green(img.pixels[loc]);
+      float b = blue(img.pixels[loc]);
+      println("before" + r,g,b);
+      //pixels[loc] = c;
+      //String s=convolution(x,y,matrix,3,img);
+      //println("After" + s);
+  }
+  }
+}
+
