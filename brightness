@@ -1,0 +1,41 @@
+//Created by Adrian
+
+import gab.opencv.*;
+
+PImage img;
+OpenCV opencv;
+Histogram grayHist;
+
+void setup(){
+  img = loadImage("data.jpg");
+  size(850, 700);
+  opencv = new OpenCV(this, img);  
+  
+  grayHist = opencv.findHistogram(opencv.getGray(), 256);
+}
+
+void draw(){
+  
+  opencv.loadImage(img);
+  
+  //Check Histogram  
+  
+  stroke(125); noFill();  
+  rect(450, 10, 400, 300);
+  
+  fill(125); noStroke();
+  grayHist.draw(450, 0, 400, 300);
+
+  image(opencv.getOutput(),10, 10, 400, 300);
+  
+  
+  //Stretch Contrast
+  
+  stroke(125); noFill();  
+  rect(450, 10, 400, 300);
+  
+  fill(125); noStroke();
+  grayHist.draw(450, 10, 400, 300);
+
+  image(opencv.getOutput(),10, 10, 400, 300);
+}
